@@ -7,3 +7,24 @@ Pick a Java project from Github (see the [instructions](../sujet.md) for suggest
 
 ## Answer
 
+first error :
+
+pmd error : UnnecessaryFullyQualifiedName:	Unnecessary qualifier 'AccurateMath': 'pow' is already in scope
+code line : return AccurateMath.pow(x, (y < 0) ? -l : l);
+
+This error don't need to be solve because it just indicate that the function pow already exist. Here we specify that we use th pow function from AccurateMath so it has no impact.
+
+
+seconde error : 
+
+pmd error : CloseResource:	Ensure that resources like this PrintStream object are closed after use
+code line : PrintStream out = System.out;
+
+This error need to be solve because it uses ressources, the object is not close after use.
+In order to solve this we can implement/modify this code : "PrintStream out = System.out;" by this :
+
+    "try (PrintStream out = System.out;) {
+
+    } catch (FileNotFoundException e) {
+        e.printStackTrace();
+    }"

@@ -6,3 +6,33 @@ A refresher on TCC and LCC is available in the [course notes](https://oscarlvp.g
 
 ## Answer
 
+Exercice 1 : 
+
+Explain under which circumstances TCC = LCC ?
+
+TLC and LCC have the same values when every method in a class uses at least one instance variable in common. It means that every method needs to be connected to have TLC and LCC with the same value.
+
+class Group {
+
+    private int weight;
+    private String name;
+    private Color color;
+
+    public Group(String name, Color color, int weight) {
+        this.name = name;
+        this.color = color;
+        this.weight = weight;
+    }
+
+    public int compareTo(Group other) {
+        return weight - other.weight;
+    }
+
+    public void draw() {
+        Screen.rectangle(color, name);
+    }
+
+}
+
+Could LCC be lower than TCC for any given class ?
+
